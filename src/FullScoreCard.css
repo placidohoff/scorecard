@@ -1,0 +1,11 @@
+.fullscorecard{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.fullscorecard__rounds{
+    display: flex;
+    flex-direction: row;
+}

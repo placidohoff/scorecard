@@ -1,0 +1,28 @@
+.scorefight__upper{
+    display: flex;
+    flex-direction: row;
+}
+
+.scorefight__names{
+    margin-right: 40px;
+}
+
+.scorefight__roundsContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.scorefight__lower{
+    margin-top: 80px;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.scorefight__lowerleft{
+    flex: .4;
+}
+
+.scorefight__lowerright{
+    flex: .6;
+}
