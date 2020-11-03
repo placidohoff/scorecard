@@ -9,9 +9,9 @@ export default function Round(props) {
 
     return (
         <div className="round">
-            <div>{props.thisRound}</div>
-            <div>{props.fighterAScore}</div>
-            <div>{props.fighterBScore}</div>
+            <div className="round__thisRound">{props.thisRound}</div>
+            <div className="round__fighterAScore">{props.fighterAScore}</div>
+            <div className="round__fighterBScore">{props.fighterBScore}</div>
             {
                 props.notes ?
                 <div

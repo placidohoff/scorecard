@@ -9,6 +9,10 @@ import { useHistory } from 'react-router-dom'
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import TextField from '@material-ui/core/TextField';
 import { useStateValue } from './StateProvider.js'
+import HorizontalScroll from 'react-scroll-horizontal'
+import StickyBox from "react-sticky-box";
+// import { FlatList } from 'react-native-gesture-handler';
+// import ReactScrollbar from 'react-scrollbar-js';
 
 export default function ScoreFight(props) {
 
@@ -35,8 +39,8 @@ export default function ScoreFight(props) {
         setScores([...scores, {fighterAScore:fighterARoundScore, fighterBScore:fighterBRoundScore, roundNotes: roundNotes}])
         setCurrentRound(previousRound + 2)
         setPreviousRound(currentRound -1)
-        setFighterATotal(fighterATotal + fighterARoundScore)
-        setFighterBTotal(fighterBTotal + fighterBRoundScore)
+        setFighterATotal(Number.parseInt(fighterATotal) + Number.parseInt(fighterARoundScore))
+        setFighterBTotal(Number.parseInt(fighterBTotal) + Number.parseInt(fighterBRoundScore))
         setFighterARoundScore(10)
         setFighterBRoundScore(10)
         setRoundNotes('')
@@ -55,6 +59,16 @@ export default function ScoreFight(props) {
         history.push('/scores')
     }
 
+    const doReturn = () => {
+        history.push('/')   
+    }
+
+    const cancelFight = () => {
+        
+        //history.push('/newfight')
+        window.location.reload();
+    }
+
     for(let round of rounds){
         emptyRounds.push(0)
     }
@@ -65,30 +79,50 @@ export default function ScoreFight(props) {
     // }
 
     //numberOfRounds();
-    console.log(scores)
+    // console.log(scores)
 
     useEffect(() => {
         console.log("SCORE THE FIGHT ", user.user)
+        console.log(props.numberOfRounds)
     }, [])
 
     useEffect(() => {
         setPreviousRound(currentRound - 1)
     }, [currentRound])
 
+    useEffect(() => {
+        if(fighterARoundScore > 10 )
+            setFighterARoundScore(10)
+        if(fighterARoundScore < 5)
+            setFighterARoundScore(5)
+    }, [fighterARoundScore])
+
+    useEffect(() => {
+        if(fighterBRoundScore > 10 )
+            setFighterBRoundScore(10)
+        if(fighterBRoundScore < 5)
+            setFighterBRoundScore(5)
+    }, [fighterBRoundScore])
+
     return (
         <div className="scorefight">
+            {/* <StickyBox> */}
             <div className="scorefight__upper">
+                
                 <div className="scorefight__names">
                     <br />
-                    <span>{props.fighterA}</span>
-                    <br />
-                    <span>{props.fighterB}</span>
+                    <div className="scorefight__fighterName">{props.fighterA}</div>
+                    {/* <br /> */}
+                    <div className="scorefight__fighterName">{props.fighterB}</div>
                 </div>
                 <div className="scorefight__roundsContainer">
+                <StickyBox> 
+                    
+                    
                     {
-                        //emptyRounds > numRounds ? <h1>Stop</h1> : <h1>FIGHT</h1>
-                        emptyRounds.map((round, index) => (
-                            scores[index] ? 
+
+                    emptyRounds.map((round, index) => (
+                        scores[index] ? 
 
                             <Round 
                                 thisRound={index+1}
@@ -129,50 +163,157 @@ export default function ScoreFight(props) {
                                 fighterBScore={'-'}
                             />
                         }
+                        </StickyBox>
                 </div>
+                
             </div>
+            
+            {/* </ReactScrollbar> */}
             <div className="scorefight__lower">
                 <div className="scorefight__lowerleft">
                 {
                 currentRound <= props.numberOfRounds ?
                     <div>
-                    <div>Round {currentRound}</div> 
+                    <div className="scorefight__roundLabel">Round {currentRound}</div> 
                     
-                    <div>{props.fighterA}: 
-                    <NumericInput 
-                        min={5}
-                        max={10}
-                        value={fighterARoundScore}
-                        onChange={valueAsNumber => setFighterARoundScore(valueAsNumber)}
+                    <div className="scorefight__fighterContainer">
+                        <div className="scorefight__fighterLabel">{props.fighterA}: </div>
+                        
+                        <div className="scorefight__scoreContainer">
+                            <div className="scorefight__fighterScoreBox"
+        >
+                                <TextField 
+                                    id="outlined-required"
+                                    // label="Weightclass"
+                                    variant="outlined"
+                                    type="number"
+                                    height="10px"
+                                    value={fighterARoundScore}
+                                    onChange={e => setFighterARoundScore(e.target.value)}
+                                    max="10"
+                                />
+                            </div>
+                            <div className="scorefight__scoreUpDown">
+                                <div
+                                    className="scorefight__scoreUp"
+                                    onClick={e => {setFighterARoundScore(fighterARoundScore+1)}}
+                                >
+                                    +
+                                </div>
+                                <div
+                                    className="scorefight__scoreDown"
+                                    onClick={e => {setFighterARoundScore(fighterARoundScore-1)}}
+                                >
+                                    -
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div className="scorefight__fighterContainer">
+                        <div className="scorefight__fighterLabel">{props.fighterB}: </div>
+                            <div className="scorefight__scoreContainer">
+                                <div className="scorefight__fighterScoreBox">
+                            
+
+                                    <TextField 
+                                        id="outlined-required"
+                                        // label="Weightclass"
+                                        variant="outlined"
+                                        type="number"
+                                        height="10px"
+                                        value={fighterBRoundScore}
+                                        onChange={e => setFighterBRoundScore(e.target.value)}
+                                    />
+                                </div>
+                                    <div className="scorefight__scoreUpDown">
+                                        <div
+                                            className="scorefight__scoreUp"
+                                            onClick={e => {setFighterBRoundScore(fighterBRoundScore+1)}}
+                                        >
+                                            +
+                                        </div>
+                                        <div
+                                            className="scorefight__scoreDown"
+                                            onClick={e => {setFighterBRoundScore(fighterBRoundScore-1)}}
+                                        >
+                                            -
+                                        </div>
+                                    </div>
+                                {/* </div> */}
+                            
+                            </div>
+                    </div>
+                    <div className="scorefight__notes">
+                        <TextField
+                        id="filled-textarea"
+                        className="scorefight__notes"
+                        rows="5"
+                        // label="Multiline Placeholder"
+                        placeholder="Notes for this round.."
+                        multiline
+                        variant="filled"
+                        value={roundNotes}
+                        onChange={event => setRoundNotes(event.target.value)}
                     />
                     </div>
-                    <div>{props.fighterB}: 
-                    <NumericInput 
-                        min={5}
-                        max={10}
-                        value={fighterBRoundScore}
-                        onChange={valueAsNumber => setFighterBRoundScore(valueAsNumber)}
-                    />
-                    </div>
+                    <div className="scorefight__submit">
                     <Button
                         onClick={submitRound}
+                        variant="contained"
+                        color="primary"
+                        // fullWidth="40px"
                     >
                         Submit
-                    
                     </Button>
+                    </div>
+                    <div className="scorefight__submit">
+                    <Button
+                        onClick={cancelFight}
+                        variant="contained"
+                        color="secondary"
+                        // fullWidth="40px"
+                    >
+                        Cancel
+                    </Button>
+                    </div>
                     </div>
                 :
                 
-                <Button
-                    onClick={saveScorecard}
-                >
-                    Save Scorecard
-                </Button>
+                user !== '' ?
+                <>
+                    <div className="scorefight__saveCard">
+                    <Button
+                        onClick={saveScorecard}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Save Scorecard
+                    </Button>
+                    </div>
+                    <div className="scorefight__return">
+                    <Button
+                        onClick={doReturn}
+                        variant="contained"
+                        color="primary"
+                    >
+                       Return
+                    </Button>
+                    </div>
+                </>
+                :
+                <div>
+                <div>Login to save Scorecard</div>
+                <div>Return to Main</div>
+                </div>
+                
                 
                 }
                 </div>
                 <div className="scorefight__lowerright">
-                <TextField
+                {/* <TextField
                     id="filled-textarea"
                     // label="Multiline Placeholder"
                     placeholder="Notes for this round.."
@@ -180,7 +321,7 @@ export default function ScoreFight(props) {
                     variant="filled"
                     value={roundNotes}
                     onChange={event => setRoundNotes(event.target.value)}
-                />
+                /> */}
                 </div>
             </div>
         </div>

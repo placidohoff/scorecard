@@ -3,9 +3,38 @@
     flex-direction: row;
     margin-top: 20px;
     margin-bottom: 20px;
+    
+}
+
+.fullscorecard__container{
+    display: flex;
+    flex-direction: row;
+    border-style: inset;
+    width: max-content;
+    margin-left: 50px;
+}
+
+.fullscorecard__delete{
+    margin-left: 20px;
+    width: 50px;
+    font-size: small;
 }
 
 .fullscorecard__rounds{
     display: flex;
     flex-direction: row;
+    /* border-style: inset; */
+}
+
+.fullscorecard__nameA{
+    margin-top: 30px;
+    font-size: 15px;
+    margin-right: 40px;;
+    margin-left: 10px
+}
+.fullscorecard__nameB{
+    margin-top: -5px;
+    font-size: 15px;
+    margin-right: 40px;
+    margin-left: 10px;
 }

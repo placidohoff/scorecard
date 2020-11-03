@@ -1,0 +1,95 @@
+.welcome__welcome{
+    font-size: 10px;
+}
+
+.welcome__username{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.newfight__seeCards{
+    font-size: 10px;
+}
+
+.newfight__logout{
+    cursor:pointer;
+    margin-top: 10px;
+    font-size: 12px;
+    text-decoration: underline;
+    color: blue;
+}
+
+.newfight__logout:hover{
+    color: red;
+}
+
+.newfight__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.newfight__field{
+    margin-top: 10px;
+}
+
+.newfight__versus{
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.newfight__rounds{
+    width: 80px;
+    margin-top: 10px;
+}
+
+.newfight__weight{
+    width: 80px;
+}
+
+.newfight__button{
+    margin-top: 20px;
+}
+
+.newfight__fighterNames{
+    /* display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%; */
+    /* margin-left: 20px; */
+}
+
+.newfight__versus{
+    margin-left: 50%;
+}
+
+.newfight__roundsContainer{
+    display: flex;
+    flex: row;
+}
+
+.newfight__roundsUpDown{
+    margin-left: 10px;
+    margin-top: -5px;
+    font-size: large;
+}
+
+.newfight__roundsUp{
+    cursor: pointer;
+}
+
+.newfight__roundsDown{
+    margin-left: 2px;
+    cursor: pointer;
+}
+
+@media (max-width: 500px){
+    .newfight__fighterNames{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* margin-left: 20px; */
+    }
+}

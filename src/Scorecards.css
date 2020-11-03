@@ -1,0 +1,33 @@
+.scorecards__container{
+    display: flex;
+    flex-direction: row;
+}
+
+.scorecards__button{
+    margin-top: 20px;
+    margin-left: -40px;
+    font-size: 10px;
+}
+
+.scorecards__welcome{
+    margin-left: 10px;
+}
+
+.scorecards__username{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.scorecards__bottomButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scorecards__anotherFight{
+    margin-top: 20px;
+}
+
+.scorecards__logout{
+    margin-top: 10px;
+}

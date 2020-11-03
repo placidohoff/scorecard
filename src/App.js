@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import ScoreFight from './ScoreFight.js'
 import Scorecards from './Scorecards.js'
 import SignIn from './SignIn.js'
+import {Article, AnotherComponent} from './Test'
+import Test from './Test.js'
 
 import { auth } from './firebase.js'
 import { useStateValue } from './StateProvider.js'
@@ -60,6 +62,10 @@ function App() {
           <Route path="/">
            <SignIn />
          </Route>
+
+          {/* <Route path="/">
+           <Test />
+         </Route> */}
 
           
       </Switch>

@@ -1,5 +1,5 @@
 export const initialState = {
-    user: null
+    user: ''
 }
 
 const reducer = (state, action) => {
@@ -13,7 +13,7 @@ const reducer = (state, action) => {
         case 'LOGOUT':
             return{
                 ...state,
-                user: null
+                user: ''
             }
         default:
             return state;

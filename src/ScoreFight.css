@@ -1,15 +1,33 @@
+.scorefight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    
+}
+
 .scorefight__upper{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    border-style: inset;
+    margin-left: 20px;
+    /* border-radius: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-width: 1px; */
+    /* width: "150%"; */
 }
 
 .scorefight__names{
     margin-right: 40px;
+    margin-left: 20px;
 }
 
 .scorefight__roundsContainer{
     display: flex;
     flex-direction: row;
+
 }
 
 .scorefight__lower{
@@ -19,10 +37,71 @@
     flex-direction: row;
 }
 
-.scorefight__lowerleft{
-    flex: .4;
+.scorefight__fighterContainer{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
 }
 
-.scorefight__lowerright{
-    flex: .6;
+.scorefight__fighterLabel{
+    margin-right: 10px;
+    width: 80px;
+}
+
+.scorefight__fighterScoreBox{
+    width: 80px;
+}
+
+.scorefight__roundLabel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+
+}
+
+.scorefight__notes{
+    margin-bottom: 10px;
+}
+
+.scorefight__submit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.scorefight__fighterName{
+    margin-top: 10px;
+}
+
+.scorefight__saveCard{
+    /* //color: primary; */
+    margin-left: -40px;
+}
+
+.scorefight__return{
+    margin-top: 5px;;
+}
+
+
+.scorefight__scoreContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.scorefight__scoreUpDown{
+    margin-left: 10px;
+    margin-top: 0px;
+    font-size: large;
+}
+
+.scorefight__scoreUp{
+    cursor: pointer;
+}
+
+.scorefight__scoreDown{
+    margin-left: 2px;
+    cursor: pointer;
 }

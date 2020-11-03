@@ -1,8 +1,21 @@
 .round{
     margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 30px;
+}
+
+.round >div{
+    margin-bottom: 10px;
+}
+
+.round__thisRound{
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: underline;
+    width: 20px;
 }
 
 .round__star{
     cursor: pointer;
+    font-weight: bold;
 }
+
