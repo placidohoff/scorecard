@@ -59,13 +59,13 @@ function App() {
           />
         </Route>
 
-          <Route path="/">
-           <SignIn />
-         </Route>
-
           {/* <Route path="/">
-           <Test />
+           <SignIn />
          </Route> */}
+
+          <Route path="/">
+           <Test />
+         </Route>
 
           
       </Switch>

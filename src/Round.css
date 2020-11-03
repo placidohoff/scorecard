@@ -1,6 +1,9 @@
 .round{
     margin-left: 20px;
     margin-right: 30px;
+    /* border-top: inset; */
+    /* border-bottom: inset; */
+    /* padding-bottom: 60px;  */
 }
 
 .round >div{

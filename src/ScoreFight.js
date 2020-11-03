@@ -109,21 +109,28 @@ export default function ScoreFight(props) {
             {/* <StickyBox> */}
             <div className="scorefight__upper">
                 
-                <div className="scorefight__names">
-                    <br />
-                    <div className="scorefight__fighterName">{props.fighterA}</div>
-                    {/* <br /> */}
-                    <div className="scorefight__fighterName">{props.fighterB}</div>
-                </div>
-                <div className="scorefight__roundsContainer">
-                <StickyBox> 
-                    
+                <div className="scorefight__upperContainer">
+                    <div className="scorefight__names">
+                        <br />
+                        <div className="scorefight__fighterName">{props.fighterA}</div>
+                        {/* <br /> */}
+                        <div className="scorefight__fighterName">{props.fighterB}</div>
+                    </div>
+                    <div className="scorefight__roundsContainer">
+                
+                
+          
                     
                     {
 
                     emptyRounds.map((round, index) => (
                         scores[index] ? 
-
+                            <li
+                            style={{
+                                display: "inline-block",
+                                margin: "20px"
+                              }}
+                            >
                             <Round 
                                 thisRound={index+1}
                                 fighterA={props.fighterA}
@@ -131,40 +138,80 @@ export default function ScoreFight(props) {
                                 fighterAScore={scores[index].fighterAScore}
                                 fighterBScore={scores[index].fighterBScore}
                                 notes={scores[index].roundNotes}
+
+                                
                             /> 
+                            </li>
                             
                             :
+                            <li
+                            style={{
+                                display: "inline-block",
+                                margin: "20px"
+                              }}
+                            >
                             <Round 
                                 thisRound={index+1}
                                 fighterA={props.fighterA}
                                 fighterB={props.fighterB}
                                 fighterAScore={'-'}
                                 fighterBScore={'-'}
+
+                                style={{
+                                    display: "inline-block",
+                                    margin: "20px"
+                                  }}
                                 //notes={scores[index].roundNotes}
                             />
+                            </li>
                             
                         ))
                     }
                         {
                             scores[0]?
+                            <li
+                            style={{
+                                display: "inline-block",
+                                margin: "20px"
+                              }}
+                            >
                             <Round 
                                 thisRound={'T'}
                                 fighterA={props.fighterA}
                                 fighterB={props.fighterB}
                                 fighterAScore={fighterATotal}
                                 fighterBScore={fighterBTotal}
+
+                                style={{
+                                    display: "inline-block",
+                                    margin: "20px"
+                                  }}
                             />
+                            </li>
                             :
+                            <li
+                            style={{
+                                display: "inline-block",
+                                margin: "20px"
+                              }}
+                            >
                             <Round 
                                 thisRound={'T'}
                                 fighterA={props.fighterA}
                                 fighterB={props.fighterB}
                                 fighterAScore={'-'}
                                 fighterBScore={'-'}
+
+                                style={{
+                                    display: "inline-block",
+                                    margin: "20px"
+                                  }}
                             />
+                            </li>
                         }
-                        </StickyBox>
+                        
                 </div>
+                </div> 
                 
             </div>
             
