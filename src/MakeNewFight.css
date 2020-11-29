@@ -9,12 +9,13 @@
 
 .newfight__seeCards{
     font-size: 10px;
+    text-decoration: underline;color: blue;
 }
 
 .newfight__logout{
     cursor:pointer;
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 10px;
     text-decoration: underline;
     color: blue;
 }

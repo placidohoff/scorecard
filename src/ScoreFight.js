@@ -37,13 +37,23 @@ export default function ScoreFight(props) {
 
     const submitRound = () => {
         setScores([...scores, {fighterAScore:fighterARoundScore, fighterBScore:fighterBRoundScore, roundNotes: roundNotes}])
-        setCurrentRound(previousRound + 2)
-        setPreviousRound(currentRound -1)
-        setFighterATotal(Number.parseInt(fighterATotal) + Number.parseInt(fighterARoundScore))
-        setFighterBTotal(Number.parseInt(fighterBTotal) + Number.parseInt(fighterBRoundScore))
-        setFighterARoundScore(10)
-        setFighterBRoundScore(10)
-        setRoundNotes('')
+        if(fighterARoundScore == 'winner' || fighterARoundScore == 'defeated'){
+            
+            console.log('hello')
+            setCurrentRound(props.numberOfRounds + 1)
+            setFighterATotal('-')
+            setFighterBTotal('-')
+
+        }
+        else{
+            setCurrentRound(previousRound + 2)
+            setPreviousRound(currentRound -1)
+            setFighterATotal(Number.parseInt(fighterATotal) + Number.parseInt(fighterARoundScore))
+            setFighterBTotal(Number.parseInt(fighterBTotal) + Number.parseInt(fighterBRoundScore))
+            setFighterARoundScore(10)
+            setFighterBRoundScore(10)
+            setRoundNotes('')
+        }
     }
 
     const saveScorecard = () => {
@@ -91,17 +101,25 @@ export default function ScoreFight(props) {
     }, [currentRound])
 
     useEffect(() => {
-        if(fighterARoundScore > 10 )
-            setFighterARoundScore(10)
-        if(fighterARoundScore < 5)
-            setFighterARoundScore(5)
+        if(fighterARoundScore > 10 ){
+            setFighterARoundScore('winner')
+            setFighterBRoundScore('defeated')
+        }
+        if(fighterARoundScore < 5){
+            setFighterARoundScore('defeated')
+            setFighterBRoundScore('winner')
+        }
     }, [fighterARoundScore])
 
     useEffect(() => {
-        if(fighterBRoundScore > 10 )
-            setFighterBRoundScore(10)
-        if(fighterBRoundScore < 5)
-            setFighterBRoundScore(5)
+        if(fighterBRoundScore > 10 ){
+            setFighterBRoundScore('winner')
+            setFighterARoundScore('defeated')
+        }
+        if(fighterBRoundScore < 5){
+            setFighterBRoundScore('defeated')
+            setFighterARoundScore('winner')
+        }
     }, [fighterBRoundScore])
 
     return (
@@ -233,23 +251,47 @@ export default function ScoreFight(props) {
                                     id="outlined-required"
                                     // label="Weightclass"
                                     variant="outlined"
-                                    type="number"
+                                    type="string"
                                     height="10px"
                                     value={fighterARoundScore}
                                     onChange={e => setFighterARoundScore(e.target.value)}
                                     max="10"
+                                    InputProps={{readOnly:true}}
+                                    color='primary'
                                 />
                             </div>
                             <div className="scorefight__scoreUpDown">
                                 <div
                                     className="scorefight__scoreUp"
-                                    onClick={e => {setFighterARoundScore(fighterARoundScore+1)}}
+                                    onClick={e => {
+                                        if(fighterARoundScore == 'winner'){
+                                            //setFighterARoundScore(fighterARoundScore+1)
+                                        }
+                                        else if(fighterARoundScore == 'defeated'){
+                                            setFighterARoundScore(5)
+                                            setFighterBRoundScore(10)
+                                        }
+                                        else{
+                                            setFighterARoundScore(fighterARoundScore+1)
+                                        }
+                                    }}
                                 >
                                     +
                                 </div>
                                 <div
                                     className="scorefight__scoreDown"
-                                    onClick={e => {setFighterARoundScore(fighterARoundScore-1)}}
+                                    onClick={e => {
+                                        if(fighterARoundScore == 'defeated'){
+
+                                        }
+                                        else if(fighterARoundScore == 'winner'){
+                                            setFighterARoundScore(10)
+                                            setFighterBRoundScore(9)
+                                        }
+                                        else
+                                            setFighterARoundScore(fighterARoundScore-1)
+                                    
+                                    }}
                                 >
                                     -
                                 </div>
@@ -273,18 +315,48 @@ export default function ScoreFight(props) {
                                         height="10px"
                                         value={fighterBRoundScore}
                                         onChange={e => setFighterBRoundScore(e.target.value)}
+                                        type="string"
+                                        InputProps={{readOnly:true}}
                                     />
                                 </div>
                                     <div className="scorefight__scoreUpDown">
                                         <div
                                             className="scorefight__scoreUp"
-                                            onClick={e => {setFighterBRoundScore(fighterBRoundScore+1)}}
+                                            onClick={e => {
+                                                if(fighterBRoundScore == 'winner'){
+                                                    //console.log('hgjgjhgkg')
+                                                    //setFighterBRoundScore(fighterBRoundScore+1)
+                                                }
+                                                else if(fighterBRoundScore == 'defeated'){
+                                                    //console.log('OKKKK')
+                                                    setFighterBRoundScore(5)
+                                                    setFighterARoundScore(10)
+                                                }
+                                                else{
+                                                    //console.log('gjgjgjg')
+                                                    //if(fighterBRoundScore !== 'defeated')    
+                                                        setFighterBRoundScore(fighterBRoundScore+1)
+                                                    //else
+                                                        //setFighterBRoundScore('5')
+                                                }
+                                            
+                                            }}
                                         >
                                             +
                                         </div>
                                         <div
                                             className="scorefight__scoreDown"
-                                            onClick={e => {setFighterBRoundScore(fighterBRoundScore-1)}}
+                                            onClick={e => {
+                                                if(fighterBRoundScore == 'defeated'){
+                                                    //setFighterBRoundScore(fighterBRoundScore-1)
+                                                }
+                                                else if(fighterBRoundScore == 'winner'){
+                                                    setFighterBRoundScore(10)
+                                                    setFighterARoundScore(9)
+                                                }
+                                                else
+                                                    setFighterBRoundScore(fighterBRoundScore-1)
+                                            }}
                                         >
                                             -
                                         </div>

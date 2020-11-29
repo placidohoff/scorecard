@@ -30,7 +30,8 @@
 
 .scorefight__names{
     margin-right: 40px;
-    margin-left: 20px;
+    margin-bottom: 30px;;
+    /* margin-left: 20px; */
 }
 
 .scorefight__roundsContainer{
@@ -47,6 +48,7 @@
     flex-direction: row;
     border: inset;
     overflow-x: scroll;
+    align-items: center;
 }
 
 .scorefight__lower{

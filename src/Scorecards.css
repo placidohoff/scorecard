@@ -31,3 +31,9 @@
 .scorecards__logout{
     margin-top: 10px;
 }
+
+.scorecards__noFightsSaved{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 30%;
+}
